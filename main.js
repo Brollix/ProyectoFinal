@@ -72,15 +72,8 @@ function Add_to_Cart(item) {
 				</button>
 			`;
 		contenedor_carrito.appendChild(div);
-
-		/* Check_Compatible(carrito);
-		if (Check_Compatible(carrito)) {
-			precio_final = Calc_IVA(Add_Price(carrito), impuesto);
-
-			console.log(`El precio final +IVA es $${precio_final}`);
-			Sort_Cart();
-		}
-		Add_Price(carrito); */
+	} else {
+		alert(`Stock: ${item.Stock}`);
 	}
 }
 

@@ -50,7 +50,7 @@ const productos = [
 		Serie: '5',
 		Socket: 'AM4',
 		Imagen: 'img/r5.png',
-		Stock: 2,
+		Stock: 0,
 		Precio: 42000,
 	},
 	{
