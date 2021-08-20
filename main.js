@@ -1,11 +1,12 @@
 //#region Variables
 let carrito = [];
-let items_selected = [];
 let subtotal = 0;
 let precio_final = 0;
 const impuesto = 1.65;
 
-const contenedor = document.getElementById('contenedor-productos');
+const contenedor_productos = document.getElementById('contenedor-productos');
+const contenedor_carrito = document.getElementById('contenedor-carrito');
+
 const items = document.getElementsByClassName('lista');
 
 //#endregion
@@ -18,71 +19,76 @@ for (i = 0; i < productos.length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-for (let i = 0; i < productos.length; i++) {
-	items_selected[i] = false;
-}
-
-for (const producto of productos) {
+for (producto of productos) {
 	const div = document.createElement('div');
-	let size;
-	switch (producto.Tipo) {
-		case 'Procesador':
-			size = 45;
-			break;
-		case 'Motherboard':
-			size = 75;
-			break;
-
-		default:
-			break;
-	}
 	div.className = 'producto';
 	//Definimos el innerHTML del elemento con una plantilla de texto
 	div.innerHTML = `
 		<div class='card'>
 			<h3>
-	 			<br>Producto:</br> ${producto.Marca}
+				${producto.Marca}
 				${producto.Serie}
 			</h3>
 			<img src=${producto.Imagen}
-				width="${size}%"
-    			height="auto"/>
+				width="150px"
+    			height="150px"/>
     		<h4>
 				$${producto.Precio}
 			</h4>
+			<h5>
+				Stock: ${producto.Stock}
+			</h5>
+			<button class='btn'onclick='Add_to_Cart(${JSON.stringify(
+				producto
+			)})'>Añadir a Carrito</button>
+			<br/>
+			<br/>
+			<hr></hr>
 		</div>`;
-	contenedor.appendChild(div);
+	contenedor_productos.appendChild(div);
 }
-
-/* if (Check_Compatible(carrito)) {
-	precio_final = Calc_IVA(Add_Price(carrito), impuesto);
-	console.log(`El precio final +IVA es $${precio_final}`);
-	Sort_Cart();
-	console.log(carrito);
-} else {
-	console.log(`Tenes incompatibilidades con tus productos en el carrito.`);
-} */
-
 //#endregion
 
 //#region Funciones
+
 function Add_to_Cart(item) {
-	items_selected[item] = false;
+	if (item.Stock > 0) {
+		item.Stock -= 1;
+		carrito.push(item);
+		const div = document.createElement('div');
+		div.id = item.id;
+		div.className = 'producto-carrito';
+		//Definimos el innerHTML del elemento con una plantilla de texto
+		div.innerHTML = `
+				<h3>
+					Producto: ${item.Marca} ${item.Serie}
+				</h3>
+				<h4>
+					$${item.Precio}
+					Stock: ${item.Stock}
+				</h4>
+				<button class='btn' onclick='Remove_From_Cart(${item.id})'>
+					Eliminar del Carrito
+				</button>
+			`;
+		contenedor_carrito.appendChild(div);
+
+		/* Check_Compatible(carrito);
+		if (Check_Compatible(carrito)) {
+			precio_final = Calc_IVA(Add_Price(carrito), impuesto);
+
+			console.log(`El precio final +IVA es $${precio_final}`);
+			Sort_Cart();
+		}
+		Add_Price(carrito); */
+	}
 }
 
 function Remove_From_Cart(item) {
-	items_selected[item] = false;
-}
-
-function Update_Carrito() {
-	carrito.splice(0, carrito.length); //Vaciar carrito
-	//Recorre items_Selected
-	itemsSelec.forEach((element, index) => {
-		if (element == true) {
-			//si es TRUE -> agrega producto al carrito
-			carrito.push(productos[index]);
-		}
-	});
+	//carrito.filter( item );
+	carrito.splice(carrito.indexOf(item));
+	contenedor_carrito.removeChild(document.getElementById(item));
+	item.Stock += 1;
 }
 
 function Add_Price(array) {
@@ -97,26 +103,26 @@ function Calc_IVA(subtotal, impuesto) {
 	return subtotal * impuesto;
 }
 
-function Check_Compatible(array) {
-	let socket = array[0]['socket'];
-	let marca = array[0]['marca'];
-	let modelo = array[0]['modelo'];
+function Check_Compatible(item) {
+	let socket = item[0]['Socket'];
+	let marca = item[0]['Marca'];
+	let modelo = item[0]['Modelo'];
 	let i = 0;
 	let compatible = true;
 	console.log(
 		`Referencia 1er producto: ${marca} ${modelo} Socket: ${socket}`
 	);
-	for (let productos of array) {
-		if (socket != productos['socket']) {
+	for (let productos of item) {
+		if (socket != productos['Socket']) {
 			compatible = false;
 			i++;
 			console.log(
-				`Index ${i + 1}: ${productos['marca']} ${
-					productos['modelo']
-				}, Socket: ${productos['socket']}`
+				`Index ${i + 1}: ${productos['Marca']} ${
+					productos['Modelo']
+				}, Socket: ${productos['Socket']}`
 			);
 			console.log(
-				`${marca} ${modelo} Socket ${socket} no es compatible con ${productos['socket']}`
+				`${marca} ${modelo} Socket ${socket} no es compatible con ${productos['Socket']}`
 			);
 			break;
 		}

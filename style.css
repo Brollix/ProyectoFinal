@@ -4,13 +4,61 @@ body{
     sans-serif;
     
 }
+.contenedor-principal{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
 
 #contenedor-productos{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    align-items: center;
+    
+}
+
+#contenedor-carrito{
+    display: grid;
+    grid-template-columns: 1fr;
+    color: white;
+    position: fixed;
+    right: 0;
+    padding-right: 1.5rem;
+}
+
+.card hr{
+    border-color: rgb(192, 140, 61);
+}
+
+.card h5{
+    padding: 5px;
 }
 
 .producto{
     margin: auto;
     color: white;
+    padding: 1.5rem;
+}
+
+.btn{
+    background-color:rgb(85, 178, 255);
+    border: none;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 1rem;
+}
+
+.btn:hover{
+    background-color: #ffb657;
+    /* Green */
+    color: white;
+    transition-duration: 250ms;
+}
+.btn:active{
+    background-color: #00236e;
+    transition-duration: 250ms;
 }
