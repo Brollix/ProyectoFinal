@@ -5,6 +5,9 @@ let subtotal = 0;
 let precio_final = 0;
 const impuesto = 1.65;
 
+const contenedor = document.getElementById('contenedor-productos');
+const items = document.getElementsByClassName('lista');
+
 //#endregion
 
 //#region Llamado a funciones y/o metodos
@@ -20,22 +23,23 @@ for (let i = 0; i < productos.length; i++) {
 }
 
 for (const producto of productos) {
-	let contenedor = document.createElement('div');
+	const div = document.createElement('div');
+	div.className = 'producto';
 	//Definimos el innerHTML del elemento con una plantilla de texto
-	contenedor.innerHTML = `
+	div.innerHTML = `
 		<div class='card'>
 			<h3>
 	 			Producto: ${producto.Marca}
 				${producto.Serie}
 			</h3>
 			<img src=${producto.Imagen}
-				width="20%"
+				width="150px"
     			height="auto"/>
     		<h4>
 				$${producto.Precio}
 			</h4>
 		</div>`;
-	document.body.appendChild(contenedor);
+	contenedor.appendChild(div);
 }
 
 /* if (Check_Compatible(carrito)) {
