@@ -55,13 +55,14 @@ function Add_to_Cart(item) {
 	if (item.Stock > 0) {
 		carrito.push(item);
 		item.Stock -= 1;
+		Check_Compatible(carrito);
 		const div = document.createElement('div');
 		div.id = item.id;
 		div.className = 'producto-carrito';
 		//Definimos el innerHTML del elemento con una plantilla de texto
 		div.innerHTML = `				
 				<h3>
-					${item.Marca} ${item.Serie}
+					${item.Marca} ${item.Serie} ${item.Socket}
 				</h3>
 				<img src=${item.Imagen}
 				width="50px"
@@ -77,7 +78,6 @@ function Add_to_Cart(item) {
 				</button>
 			`;
 		contenedor_carrito.appendChild(div);
-		console.log(carrito);
 	} else {
 		alert(`Stock: ${item.Stock}`);
 	}
@@ -87,7 +87,7 @@ function Remove_From_Cart(item) {
 	//carrito.filter( item );
 	carrito.splice(carrito.indexOf(item));
 	contenedor_carrito.removeChild(document.getElementById(item));
-	item.Stock += 1;
+	console.clear();
 }
 
 function Add_Price(array) {
@@ -105,23 +105,21 @@ function Calc_IVA(subtotal, impuesto) {
 function Check_Compatible(item) {
 	let socket = item[0]['Socket'];
 	let marca = item[0]['Marca'];
-	let modelo = item[0]['Modelo'];
+	let serie = item[0]['Serie'];
 	let i = 0;
 	let compatible = true;
-	console.log(
-		`Referencia 1er producto: ${marca} ${modelo} Socket: ${socket}`
-	);
+	console.log(`Referencia 1er producto: ${marca} ${serie} Socket: ${socket}`);
 	for (let productos of item) {
 		if (socket != productos['Socket']) {
 			compatible = false;
 			i++;
 			console.log(
 				`Index ${i + 1}: ${productos['Marca']} ${
-					productos['Modelo']
+					productos['Serie']
 				}, Socket: ${productos['Socket']}`
 			);
 			console.log(
-				`${marca} ${modelo} Socket ${socket} no es compatible con ${productos['Socket']}`
+				`${marca} ${serie} Socket ${socket} no es compatible con ${productos['Socket']}`
 			);
 			break;
 		}
@@ -135,5 +133,4 @@ function Sort_Cart() {
 		return a.precio - b.precio;
 	});
 }
-
 //#endregion
