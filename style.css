@@ -1,6 +1,8 @@
 body{
+    background-color: black;
     font-family: 'Roboto',
     sans-serif;
+    
 }
 
 #contenedor-productos{
@@ -10,4 +12,5 @@ body{
 
 .producto{
     margin: auto;
+    color: white;
 }

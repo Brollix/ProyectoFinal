@@ -24,16 +24,28 @@ for (let i = 0; i < productos.length; i++) {
 
 for (const producto of productos) {
 	const div = document.createElement('div');
+	let size;
+	switch (producto.Tipo) {
+		case 'Procesador':
+			size = 45;
+			break;
+		case 'Motherboard':
+			size = 75;
+			break;
+
+		default:
+			break;
+	}
 	div.className = 'producto';
 	//Definimos el innerHTML del elemento con una plantilla de texto
 	div.innerHTML = `
 		<div class='card'>
 			<h3>
-	 			Producto: ${producto.Marca}
+	 			<br>Producto:</br> ${producto.Marca}
 				${producto.Serie}
 			</h3>
 			<img src=${producto.Imagen}
-				width="150px"
+				width="${size}%"
     			height="auto"/>
     		<h4>
 				$${producto.Precio}
