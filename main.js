@@ -38,7 +38,7 @@ for (producto of productos) {
 			<h5>
 				Stock: ${producto.Stock}
 			</h5>
-			<button class='btn'onclick='Add_to_Cart(${JSON.stringify(
+			<button class='btn' onclick='Add_to_Cart(${JSON.stringify(
 				producto
 			)})'>Añadir a Carrito</button>
 			<br/>
@@ -53,25 +53,31 @@ for (producto of productos) {
 
 function Add_to_Cart(item) {
 	if (item.Stock > 0) {
-		item.Stock -= 1;
 		carrito.push(item);
+		item.Stock -= 1;
 		const div = document.createElement('div');
 		div.id = item.id;
 		div.className = 'producto-carrito';
 		//Definimos el innerHTML del elemento con una plantilla de texto
-		div.innerHTML = `
+		div.innerHTML = `				
 				<h3>
-					Producto: ${item.Marca} ${item.Serie}
+					${item.Marca} ${item.Serie}
 				</h3>
+				<img src=${item.Imagen}
+				width="50px"
+    			height="auto"/>
 				<h4>
-					$${item.Precio}
-					Stock: ${item.Stock}
+					$${item.Precio}					
 				</h4>
+				<h5>
+					Stock: ${item.Stock}
+				</h5>
 				<button class='btn' onclick='Remove_From_Cart(${item.id})'>
 					Eliminar del Carrito
 				</button>
 			`;
 		contenedor_carrito.appendChild(div);
+		console.log(carrito);
 	} else {
 		alert(`Stock: ${item.Stock}`);
 	}

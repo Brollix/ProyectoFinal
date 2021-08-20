@@ -17,6 +17,11 @@ nav{
     color: aliceblue;
 }
 
+.titulo{
+    color: white;
+    text-align: center;
+}
+
 .contenedor-principal{
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -24,11 +29,12 @@ nav{
 
 #contenedor-productos{
     display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin: auto;
 }
 
 #contenedor-carrito{
+    transition: 250ms;
     background-color: transparent;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -84,6 +90,10 @@ nav{
     transform: scale(115%);
     transition: 250ms;
     transition-timing-function: ease;
+}
+
+.producto-carrito:cue{
+    transition: 250ms;
 }
 
 .btn:hover{
