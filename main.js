@@ -19,11 +19,18 @@ for (i = 0; i < productos.length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-for (producto of productos) {
-	const div = document.createElement('div');
-	div.className = 'producto';
-	//Definimos el innerHTML del elemento con una plantilla de texto
-	div.innerHTML = `
+//#endregion
+
+//#region Funciones
+
+show_products(productos);
+
+function show_products(productos) {
+	for (producto of productos) {
+		const div = document.createElement('div');
+		div.className = 'producto';
+		//Definimos el innerHTML del elemento con una plantilla de texto
+		div.innerHTML = `
 		<div class='card'>
 			<h3>
 				${producto.Marca}
@@ -38,29 +45,35 @@ for (producto of productos) {
 			<h5>
 				Stock: ${producto.Stock}
 			</h5>
-			<button class='btn' onclick='Add_to_Cart(${JSON.stringify(
+			<button class='btn' onclick='add_to_cart(${JSON.stringify(
 				producto
 			)})'>Añadir a Carrito</button>
 			<br/>
 			<br/>
 			<hr></hr>
 		</div>`;
-	contenedor_productos.appendChild(div);
+		contenedor_productos.appendChild(div);
+	}
 }
-//#endregion
 
-//#region Funciones
-
-function Add_to_Cart(item) {
+function add_to_cart(item) {
 	if (item.Stock > 0) {
 		carrito.push(item);
 		item.Stock -= 1;
-		Check_Compatible(carrito);
-		const div = document.createElement('div');
-		div.id = item.id;
-		div.className = 'producto-carrito';
-		//Definimos el innerHTML del elemento con una plantilla de texto
-		div.innerHTML = `				
+		check_compatible(carrito);
+		push_cart(item);
+	} else {
+		alert(`Stock: ${item.Stock}`);
+	}
+	debugger;
+}
+
+function push_cart(item) {
+	const div = document.createElement('div');
+	div.id = item.id;
+	div.className = 'producto-carrito';
+	//Definimos el innerHTML del elemento con una plantilla de texto
+	div.innerHTML = `				
 				<h3>
 					${item.Marca} ${item.Serie} ${item.Socket}
 				</h3>
@@ -77,12 +90,8 @@ function Add_to_Cart(item) {
 					Eliminar del Carrito
 				</button>
 			`;
-		contenedor_carrito.appendChild(div);
-	} else {
-		alert(`Stock: ${item.Stock}`);
-	}
+	contenedor_carrito.appendChild(div);
 }
-
 function Remove_From_Cart(item) {
 	//carrito.filter( item );
 	carrito.splice(carrito.indexOf(item));
@@ -90,19 +99,19 @@ function Remove_From_Cart(item) {
 	console.clear();
 }
 
-function Add_Price(array) {
+function add_price(array) {
 	for (let productos of array) {
 		subtotal += productos['precio'];
 	}
 	return subtotal;
 }
 
-function Calc_IVA(subtotal, impuesto) {
+function calc_IVA(subtotal, impuesto) {
 	console.log(`Subtotal: $${subtotal}`);
 	return subtotal * impuesto;
 }
 
-function Check_Compatible(item) {
+function check_compatible(item) {
 	let socket = item[0]['Socket'];
 	let marca = item[0]['Marca'];
 	let serie = item[0]['Serie'];
@@ -127,7 +136,7 @@ function Check_Compatible(item) {
 	return compatible;
 }
 
-function Sort_Cart() {
+function sort_cart() {
 	carrito.sort(function (a, b) {
 		console.log('Ordenando el carrito');
 		return a.precio - b.precio;

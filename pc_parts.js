@@ -1,4 +1,4 @@
-let productos = [
+const productos = [
 	{
 		Tipo: 'Procesador',
 		Marca: 'Intel Core',
