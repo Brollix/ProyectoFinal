@@ -19,11 +19,11 @@ for (i = 0; i < productos.length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
+show_products(productos);
+
 //#endregion
 
 //#region Funciones
-
-show_products(productos);
 
 function show_products(productos) {
 	for (producto of productos) {
