@@ -45,7 +45,7 @@ function show_products(productos) {
 			<h5>
 				Stock: ${producto.Stock}
 			</h5>
-			<button class='btn' onclick='add_to_cart(producto)'>Añadir a Carrito</button>
+			<button class='btn' onclick='add_to_cart(producto)' >Añadir a Carrito</button>
 			<br/>
 			<br/>
 			<hr></hr>
@@ -56,7 +56,6 @@ function show_products(productos) {
 
 function add_to_cart(item) {
 	if (item.Stock > 0) {
-		item.Stock -= 1;
 		carrito.push(item);
 		check_compatible(carrito);
 		push_cart(item);
@@ -94,7 +93,6 @@ function Remove_From_Cart(item) {
 	//carrito.filter( item );
 	carrito.splice(carrito.indexOf(item));
 	contenedor_carrito.removeChild(document.getElementById(item));
-	console.clear();
 }
 
 function add_price(array) {
