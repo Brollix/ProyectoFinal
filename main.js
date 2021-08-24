@@ -6,9 +6,6 @@ const impuesto = 1.65;
 
 const contenedor_productos = document.getElementById('contenedor-productos');
 const contenedor_carrito = document.getElementById('contenedor-carrito');
-
-const items = document.getElementsByClassName('lista');
-
 //#endregion
 
 //#region Llamado a funciones y/o metodos
@@ -62,7 +59,6 @@ function add_to_cart(item) {
 	} else {
 		alert(`Stock: ${item.Stock}`);
 	}
-	debugger;
 }
 
 function push_cart(item) {
