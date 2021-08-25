@@ -49,7 +49,6 @@ function show_products(productos) {
 		let boton = document.createElement('button');
 		boton.innerHTML = 'Añadir al carrito';
 		boton.className = 'btn';
-		boton.id = producto.id;
 		boton.addEventListener('click', () => {
 			add_to_cart(producto);
 		});
