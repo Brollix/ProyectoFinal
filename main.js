@@ -1,6 +1,6 @@
 //#region Variables
 let carrito = [];
-let subtotal = 0;
+let subtotal;
 let precio_final = 0;
 const impuesto = 1.21;
 
@@ -64,9 +64,8 @@ function show_products(productos) {
 	});
 }
 
-function add_to_cart ( item )
-{
-	subtotal = 0
+function add_to_cart(item) {
+	subtotal = 0;
 	carrito.push(item);
 
 	if (item.Stock > 0) {
@@ -118,10 +117,9 @@ function remove_from_cart(item) {
 	carrito.splice(carrito.indexOf(item));
 }
 
-function add_price ( array )
-{
+function add_price(array) {
 	for (let i = 0; i < array.length; i++) {
-		subtotal += array[ i ].Precio;
+		subtotal += array[i].Precio;
 		console.log(subtotal);
 	}
 	return subtotal;
