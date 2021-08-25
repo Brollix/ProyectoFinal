@@ -29,12 +29,12 @@ body {
 
 .contenedor-principal {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
+	grid-template-columns: 1fr 1fr;
 }
 
 #contenedor-productos {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	display: flex;
+	flex-wrap: wrap;
 	margin: auto;
 }
 
@@ -42,7 +42,6 @@ body {
 	transition: 250ms;
 	background-color: transparent;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
 	color: white;
 	position: fixed;
 	right: 0;
@@ -51,11 +50,13 @@ body {
 	max-height: 85%;
 }
 
-#calculadora-precio{
+#calculadora-precio {
 	color: white;
+	position: fixed;
+	right: 500px;
 }
 
-img{
+img {
 	width: 150px;
 	height: auto;
 }

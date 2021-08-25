@@ -2,11 +2,10 @@
 let carrito = [];
 let subtotal = 0;
 let precio_final = 0;
-const impuesto = 1.65;
+const impuesto = 1.21;
 
 const contenedor_productos = document.getElementById('contenedor-productos');
 const contenedor_carrito = document.getElementById('contenedor-carrito');
-
 
 //#endregion
 
@@ -18,7 +17,7 @@ for (i = 0; i < productos.length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-show_products( productos );
+show_products(productos);
 
 //#endregion
 
@@ -67,7 +66,8 @@ function show_products(productos) {
 
 function add_to_cart ( item )
 {
-	carrito.push( item );	
+	subtotal = 0
+	carrito.push(item);
 
 	if (item.Stock > 0) {
 		item.Stock -= 1;
@@ -102,11 +102,13 @@ function add_to_cart ( item )
 
 		contenedor_carrito.appendChild(div_carrito);
 
-		check_compatible( carrito );
-		
-		let calculadora_precio = calc_IVA( add_price( carrito ), impuesto );
-		document.getElementById( 'calculadora-precio' ).innerHTML = `(IVA Incluido) Precio: $${calculadora_precio}`;
-		
+		check_compatible(carrito);
+
+		subtotal = add_price(carrito);
+		precio_final = calc_IVA(subtotal, impuesto);
+		document.getElementById(
+			'calculadora-precio'
+		).innerHTML = `(IVA Incluido) Precio: $${precio_final}`;
 	} else alert('No disponible. Stock: ' + item.Stock);
 }
 
@@ -116,15 +118,16 @@ function remove_from_cart(item) {
 	carrito.splice(carrito.indexOf(item));
 }
 
-function add_price(array) {
-	for (let productos of array) {
-		subtotal += productos.Precio;
+function add_price ( array )
+{
+	for (let i = 0; i < array.length; i++) {
+		subtotal += array[ i ].Precio;
+		console.log(subtotal);
 	}
 	return subtotal;
 }
 
 function calc_IVA(subtotal, impuesto) {
-	console.log(`Subtotal: $${subtotal}`);
 	return subtotal * impuesto;
 }
 
