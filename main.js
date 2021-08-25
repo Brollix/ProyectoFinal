@@ -35,16 +35,16 @@ function show_products(productos) {
 			</h3>
 			<img src=${producto.Imagen}
 				width="150px"
-    			height="150px"/>
+    			height="auto"/>
     		<h4>
 				$${producto.Precio}
 			</h4>
 			<h5>
 				Stock: ${producto.Stock}
 			</h5>
-			<button class='btn' onclick='add_to_cart(producto)' >Añadir a Carrito</button>
-			<br/>
-			<br/>
+			<button class='btn' onclick='add_to_cart(${JSON.stringify(
+				producto
+			)})'>Añadir al Carrito</button>
 			<hr></hr>
 		</div>`;
 		contenedor_productos.appendChild(div);
@@ -54,38 +54,34 @@ function show_products(productos) {
 function add_to_cart(item) {
 	if (item.Stock > 0) {
 		carrito.push(item);
-		check_compatible(carrito);
-		push_cart(item);
-	} else {
-		alert(`Stock: ${item.Stock}`);
-	}
-}
-
-function push_cart(item) {
-	const div = document.createElement('div');
-	div.id = item.id;
-	div.className = 'producto-carrito';
-	//Definimos el innerHTML del elemento con una plantilla de texto
-	div.innerHTML = `				
+		const div = document.createElement('div');
+		div.id = item.id;
+		div.className = 'producto-carrito';
+		//Definimos el innerHTML del elemento con una plantilla de texto
+		div.innerHTML = `				
 				<h3>
 					${item.Marca} ${item.Serie} ${item.Socket}
 				</h3>
-				<img src=${item.Imagen}
-				width="50px"
-    			height="auto"/>
 				<h4>
 					$${item.Precio}					
 				</h4>
 				<h5>
 					Stock: ${item.Stock}
 				</h5>
-				<button class='btn' onclick='Remove_From_Cart(${item.id})'>
+				<button class='btn' onclick='remove_from_cart(${item.id})'>
 					Eliminar del Carrito
 				</button>
 			`;
-	contenedor_carrito.appendChild(div);
+
+		console.log(producto);
+		contenedor_carrito.appendChild(div);
+		check_compatible(carrito);
+	} else {
+		alert(`Stock: ${item.Stock}`);
+	}
 }
-function Remove_From_Cart(item) {
+
+function remove_from_cart(item) {
 	//carrito.filter( item );
 	carrito.splice(carrito.indexOf(item));
 	contenedor_carrito.removeChild(document.getElementById(item));

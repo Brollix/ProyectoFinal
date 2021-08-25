@@ -1,8 +1,6 @@
-body{
-    background-color: rgb(13, 24, 39);
-    font-family: 'Roboto',
-    sans-serif;
-    
+body {
+	background-color: rgb(13, 24, 39);
+	font-family: 'Roboto', sans-serif;
 }
 
 /* nav{
@@ -17,96 +15,96 @@ body{
     color: aliceblue;
 } */
 
-.titulo{
-    color: white;
-    text-align: center;
+.titulo {
+	color: white;
+	text-align: center;
 }
 
-.contenedor-principal{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+.contenedor-principal {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
 }
 
-#contenedor-productos{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: auto;
+#contenedor-productos {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	margin: auto;
 }
 
-#contenedor-carrito{
-    transition: 250ms;
-    background-color: transparent;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    color: white;
-    position: fixed;
-    right: 0;
-    padding-right: 1.5rem;
-    overflow-y: scroll;
-    max-height: 85%;
+#contenedor-carrito {
+	transition: 250ms;
+	background-color: transparent;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	color: white;
+	position: fixed;
+	right: 0;
+	padding-right: 1.5rem;
+	overflow-y: scroll;
+	max-height: 85%;
 }
 
-.card{
-    transition: 250ms    
+.card {
+	transition: 250ms;
 }
 
-.card hr{
-    border-color: rgb(255, 153, 0);
+.card hr {
+	border-color: rgb(255, 153, 0);
 }
 
-.card h5{
-
-    padding: 10px;
+.card h5 {
+	padding: 10px;
 }
 
-.producto{
-    color: white;
-    padding: 1rem;
+.producto {
+	color: white;
+	padding: 1rem;
 }
 
-.producto-carrito{
-    padding: 1rem;
+.producto-carrito {
+	size: 1.2rem;
+	padding: 1rem;
 }
 
-.btn{
-    background-color:rgb(255, 204, 108);
-    border: none;
-    margin: auto;
-    padding: 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 1rem;
-    height: fit-content;
-    transition: 150ms;
+.btn {
+	size: 1.2rem;
+	background-color: rgb(255, 204, 108);
+	border: none;
+	margin: auto;
+	padding: 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border-radius: 1rem;
+	height: fit-content;
+	transition: 150ms;
 }
 
 .card:hover {
-    transform: scale(110%);
-    transition: 250ms;
-    transition-timing-function: ease;
+	transform: scale(110%);
+	transition: 250ms;
+	transition-timing-function: ease;
 }
 
 .producto-carrito:hover {
-    transform: scale(115%);
-    transition: 250ms;
-    transition-timing-function: ease;
+	transform: scale(115%);
+	transition: 250ms;
+	transition-timing-function: ease;
 }
 
-.producto-carrito:cue{
-    transition: 250ms;
+.producto-carrito:cue {
+	transition: 250ms;
 }
 
-.btn:hover{
-    background-color: #3d65bd;
-    color: white;
-    transition: 150ms;
-    transition-timing-function: ease;
-    
+.btn:hover {
+	background-color: #3d65bd;
+	color: white;
+	transition: 150ms;
+	transition-timing-function: ease;
 }
-.btn:active{
-    background-color: #5e421e;
-    transition: 50ms;
-    transition-timing-function: ease;
+.btn:active {
+	background-color: #5e421e;
+	transition: 50ms;
+	transition-timing-function: ease;
 }
