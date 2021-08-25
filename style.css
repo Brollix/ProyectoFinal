@@ -1,5 +1,12 @@
+:root {
+	--bg-color: rgb(13, 24, 39);
+	--accent-color: rgb(255, 204, 108);
+	--contrast-color: #3d65bd;
+	--btn-active-color: #5e421e;
+}
+
 body {
-	background-color: rgb(13, 24, 39);
+	background-color: var(--bg-color);
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -27,7 +34,7 @@ body {
 
 #contenedor-productos {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
 	margin: auto;
 }
 
@@ -44,12 +51,21 @@ body {
 	max-height: 85%;
 }
 
+#calculadora-precio{
+	color: white;
+}
+
+img{
+	width: 150px;
+	height: auto;
+}
+
 .card {
 	transition: 250ms;
 }
 
 .card hr {
-	border-color: rgb(255, 153, 0);
+	border-color: var(--accent-color);
 }
 
 .card h5 {
@@ -61,14 +77,9 @@ body {
 	padding: 1rem;
 }
 
-.producto-carrito {
-	size: 1.2rem;
-	padding: 1rem;
-}
-
 .btn {
 	size: 1.2rem;
-	background-color: rgb(255, 204, 108);
+	background-color: var(--accent-color);
 	border: none;
 	margin: auto;
 	padding: 15px;
@@ -87,24 +98,14 @@ body {
 	transition-timing-function: ease;
 }
 
-.producto-carrito:hover {
-	transform: scale(115%);
-	transition: 250ms;
-	transition-timing-function: ease;
-}
-
-.producto-carrito:cue {
-	transition: 250ms;
-}
-
 .btn:hover {
-	background-color: #3d65bd;
+	background-color: var(--contrast-color);
 	color: white;
 	transition: 150ms;
 	transition-timing-function: ease;
 }
 .btn:active {
-	background-color: #5e421e;
+	background-color: var(--btn-active-color);
 	transition: 50ms;
 	transition-timing-function: ease;
 }
