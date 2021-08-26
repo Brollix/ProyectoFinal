@@ -32,6 +32,10 @@ function show_products(productos) {
 		marca.className = 'marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
+		let socket = document.createElement('h3');
+		socket.className = 'socket';
+		socket.textContent = `Socket ${producto.Socket}`;
+
 		let stock = document.createElement('h5');
 		stock.className = 'stock';
 		if (producto.Stock > 0) {
@@ -54,6 +58,7 @@ function show_products(productos) {
 		});
 
 		div_producto.appendChild(marca);
+		div_producto.appendChild(socket);
 		div_producto.appendChild(stock);
 		div_producto.appendChild(imagen);
 		div_producto.appendChild(precio);
@@ -78,6 +83,10 @@ function add_to_cart(item) {
 		marca.className = 'marca';
 		marca.textContent = `${item.Marca} ${item.Serie}`;
 
+		let socket = document.createElement('h3');
+		socket.className = 'socket';
+		socket.textContent = `${item.Socket}`;
+
 		let stock = document.createElement('h3');
 		stock.className = 'stock';
 		stock.textContent = item.Stock;
@@ -94,16 +103,18 @@ function add_to_cart(item) {
 		});
 
 		div_carrito.appendChild(marca);
+		div_carrito.appendChild(socket);
 		div_carrito.appendChild(stock);
 		div_carrito.appendChild(precio);
 		div_carrito.appendChild(boton);
 
 		contenedor_carrito.appendChild(div_carrito);
 
-		check_compatible(carrito);
+		if (check_compatible(carrito)) {
+			subtotal = add_price(carrito);
+			precio_final = calc_IVA(subtotal, impuesto);
+		}
 
-		subtotal = add_price(carrito);
-		precio_final = calc_IVA(subtotal, impuesto);
 		document.getElementById(
 			'calculadora-precio'
 		).innerHTML = `(IVA Incluido) Precio: $${precio_final}`;
@@ -111,7 +122,6 @@ function add_to_cart(item) {
 }
 
 function remove_from_cart(item) {
-	console.log(item);
 	contenedor_carrito.removeChild(document.getElementById(item.id));
 	carrito.splice(carrito.indexOf(item));
 }
@@ -119,7 +129,6 @@ function remove_from_cart(item) {
 function add_price(array) {
 	for (let i = 0; i < array.length; i++) {
 		subtotal += array[i].Precio;
-		console.log(subtotal);
 	}
 	return subtotal;
 }
@@ -134,7 +143,6 @@ function check_compatible(item) {
 	let serie = item[0]['Serie'];
 	let i = 0;
 	let compatible = true;
-	console.log(`Referencia 1er producto: ${marca} ${serie} Socket: ${socket}`);
 	for (let productos of item) {
 		if (socket != productos['Socket']) {
 			compatible = false;
@@ -144,9 +152,9 @@ function check_compatible(item) {
 					productos['Serie']
 				}, Socket: ${productos['Socket']}`
 			);
-			console.log(
-				`${marca} ${serie} Socket ${socket} no es compatible con Socket: ${productos['Socket']}`
-			);
+			document.getElementById(
+				'aviso'
+			).innerHTML = `${marca} ${serie} Socket ${socket} no es compatible con Socket: ${productos.Socket}`;
 			break;
 		}
 	}

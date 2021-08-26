@@ -29,12 +29,12 @@ body {
 
 .contenedor-principal {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 3fr 1fr;
 }
 
 #contenedor-productos {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	margin: auto;
 }
 
@@ -54,6 +54,12 @@ body {
 	color: white;
 	position: fixed;
 	right: 500px;
+	background-color: #3d65bd;
+	padding: 0.5rem;
+}
+
+#aviso{
+	color: white;
 }
 
 img {
@@ -74,6 +80,7 @@ img {
 }
 
 .producto {
+	margin: auto;
 	color: white;
 	padding: 1rem;
 }
