@@ -4,8 +4,6 @@ const productos = [
 		Marca: 'Intel Core',
 		Serie: 'i3',
 		Socket: '1151',
-		Imagen: 'i3.png',
-		Stock: 6,
 		Precio: 30000,
 	},
 	{
@@ -13,8 +11,6 @@ const productos = [
 		Marca: 'Intel Core',
 		Serie: 'i5',
 		Socket: '1151',
-		Imagen: 'i5.png',
-		Stock: 6,
 		Precio: 25000,
 	},
 	{
@@ -22,8 +18,6 @@ const productos = [
 		Marca: 'Intel Core',
 		Serie: 'i7',
 		Socket: '1200',
-		Imagen: 'i7.png',
-		Stock: 4,
 		Precio: 60000,
 	},
 	{
@@ -31,8 +25,6 @@ const productos = [
 		Marca: 'Intel Core',
 		Serie: 'i9',
 		Socket: '1200',
-		Imagen: 'i9.png',
-		Stock: 5,
 		Precio: 73000,
 	},
 	{
@@ -40,8 +32,6 @@ const productos = [
 		Marca: 'AMD Ryzen',
 		Serie: '3',
 		Socket: 'AM4',
-		Imagen: 'r3.png',
-		Stock: 8,
 		Precio: 37000,
 	},
 	{
@@ -49,8 +39,6 @@ const productos = [
 		Marca: 'AMD Ryzen',
 		Serie: '5',
 		Socket: 'AM4',
-		Imagen: 'r5.png',
-		Stock: 0,
 		Precio: 42000,
 	},
 	{
@@ -58,8 +46,6 @@ const productos = [
 		Marca: 'AMD Ryzen',
 		Serie: '7',
 		Socket: 'AM4',
-		Imagen: 'r7.png',
-		Stock: 5,
 		Precio: 65000,
 	},
 	{
@@ -67,8 +53,6 @@ const productos = [
 		Marca: 'AMD Ryzen',
 		Serie: '9',
 		Socket: 'AM4',
-		Imagen: 'r9.png',
-		Stock: 7,
 		Precio: 78000,
 	},
 	{
@@ -76,8 +60,6 @@ const productos = [
 		Marca: 'Asus',
 		Serie: 'B85',
 		Socket: '1151',
-		Imagen: 'B85.png',
-		Stock: 2,
 		Precio: 20000,
 	},
 	{
@@ -85,8 +67,6 @@ const productos = [
 		Marca: 'Gigabyte',
 		Serie: 'Z370',
 		Socket: '1200',
-		Imagen: 'Z370.png',
-		Stock: 5,
 		Precio: 33000,
 	},
 	{
@@ -94,8 +74,6 @@ const productos = [
 		Marca: 'Gigabyte',
 		Serie: 'Z590',
 		Socket: '1200',
-		Imagen: 'Z590.png',
-		Stock: 7,
 		Precio: 40000,
 	},
 	{
@@ -103,8 +81,6 @@ const productos = [
 		Marca: 'Asus',
 		Serie: 'B550',
 		Socket: 'AM4',
-		Imagen: 'B550.png',
-		Stock: 6,
 		Precio: 25000,
 	},
 	{
@@ -112,8 +88,6 @@ const productos = [
 		Marca: 'Asus',
 		Serie: 'X570',
 		Socket: 'AM4',
-		Imagen: 'X570.png',
-		Stock: 7,
 		Precio: 35000,
 	},
 	{
@@ -121,8 +95,6 @@ const productos = [
 		Marca: 'Gigabyte',
 		Serie: 'A570',
 		Socket: 'AM4',
-		Imagen: 'A570.png',
-		Stock: 6,
 		Precio: 39000,
 	},
 ];
