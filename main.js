@@ -1,5 +1,4 @@
-//#region Variables
-
+//#region Variables & Constantes
 let carrito = [];
 let subtotal;
 let precio_final = 0;
@@ -18,7 +17,7 @@ for (i = 0; i < length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-show_products(filter_by_socket(productos, 'AM4'));
+show_products(productos);
 
 //#endregion
 
@@ -36,28 +35,22 @@ function filter_by_socket(array, socket) {
 
 function show_products(productos) {
 	productos.forEach((producto) => {
-		let div_producto = document.createElement('div');
+		let div_producto = document.createElement('tr');
 		div_producto.className = 'producto';
 
-		let marca = document.createElement('h3');
+		let marca = document.createElement('th');
 		marca.className = 'marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
-		let socket = document.createElement('h3');
+		let socket = document.createElement('th');
 		socket.className = 'socket';
 		socket.textContent = `Socket ${producto.Socket}`;
 
-		let stock = document.createElement('h5');
-		stock.className = 'stock';
-		if (producto.Stock > 0) {
-			stock.textContent = 'Stock: ' + producto.Stock;
-		} else stock.textContent = 'No Disponible';
-
-		let imagen = document.createElement('img');
+		let imagen = document.createElement('th');
 		imagen.src = '../img/' + producto.Imagen;
 		imagen.className = 'imagen';
 
-		let precio = document.createElement('h4');
+		let precio = document.createElement('th');
 		precio.className = 'precio';
 		precio.textContent = '$' + producto.Precio;
 
@@ -71,7 +64,6 @@ function show_products(productos) {
 
 		div_producto.appendChild(marca);
 		div_producto.appendChild(socket);
-		div_producto.appendChild(stock);
 		div_producto.appendChild(imagen);
 		div_producto.appendChild(precio);
 		div_producto.appendChild(boton);
