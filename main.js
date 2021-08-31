@@ -47,7 +47,7 @@ function show_products(productos) {
 		socket.textContent = producto.Socket;
 
 		let imagen_div = document.createElement('td');
-		let imagen = document.createElement( 'img' );
+		let imagen = document.createElement('img');
 		imagen_div.appendChild(imagen);
 		imagen.src = '../img/' + producto.Imagen;
 		imagen.className = 'imagen';
@@ -56,28 +56,30 @@ function show_products(productos) {
 		precio.className = 'precio';
 		precio.textContent = '$' + producto.Precio;
 
-		let boton_div = document.createElement('td')
-		let boton = document.createElement( 'button' );
+		let boton_div = document.createElement('td');
+		let boton = document.createElement('button');
 		boton_div.appendChild(boton);
 		boton.innerHTML = 'Añadir al carrito';
 		boton.className = 'btn';
+		boton.style.backgroundColor = 'rgb(255, 204, 108)';
 
 		let selected = false;
 
-		boton.addEventListener( 'click', () =>
-		{
+		boton.addEventListener('click', () => {
 			selected = !selected;
 			if (selected == true) {
-				add_to_cart(producto);
+				add_to_selected(producto);
 				boton.innerHTML = 'Eliminar del carrito';
+				boton.style.backgroundColor = 'red';
 			} else if (selected == false) {
 				if (carrito != null) {
-					remove_from_cart(producto);
+					remove_from_selected(producto);
 					boton.innerHTML = 'Añadir al carrito';
+					boton.style.backgroundColor = 'rgb(255, 204, 108)';
 				}
 			}
 		});
-		
+
 		div_producto.appendChild(imagen_div);
 		div_producto.appendChild(marca);
 		div_producto.appendChild(socket);
@@ -88,14 +90,18 @@ function show_products(productos) {
 	});
 }
 
-function add_to_cart(item) {
+function add_to_selected(item) {
+	item = JSON.stringify(item);
 	carrito.push(item);
-	sort_cart(carrito);
+	localStorage.setItem('carrito', carrito);
+
+	console.log(localStorage.getItem('carrito'));
 }
 
-function remove_from_cart(item) {
+function remove_from_selected(item) {
 	//contenedor_carrito.removeChild(document.getElementById(item.id));
 	carrito.splice(carrito.indexOf(item));
+	localStorage.setItem('carrito', carrito);
 }
 
 function add_price(array) {
@@ -104,7 +110,6 @@ function add_price(array) {
 	}
 	return subtotal;
 }
-
 
 /* function check_compatible(item) {
 	if (item.length > 1) {
@@ -128,10 +133,10 @@ function add_price(array) {
 	}
 } */
 
-function sort_cart(array) {
+/* function sort_cart(array) {
 	array.sort(function (a, b) {
 		console.log('Ordenando el carrito por precio');
 		return a.precio - b.precio;
 	});
-}
+} */
 //#endregion

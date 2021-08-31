@@ -1,6 +1,6 @@
 :root {
 	--bg-color: rgb(13, 24, 39);
-	--accent-color: rgb(255, 204, 108);
+	--accent-color: ;
 	--contrast-color: #3d65bd;
 	--btn-active-color: #e7880c;
 }
@@ -15,53 +15,53 @@ body {
 	text-align: center;
 }
 
-#lista-productos{
+#lista-productos {
 	margin: auto;
 }
 
-.producto, th{
+.producto,
+th {
 	color: white;
 }
-th{
+th {
 	padding: 1rem;
 }
 
-#block-vacio{
+#block-vacio {
 	visibility: hidden;
 }
 
-.producto{
+.producto {
 	background-color: rgba(59, 100, 187, 0.521);
 	height: 3rem;
 }
 
-td{
+td {
 	text-align: center;
-
 }
 
-.producto:hover{
-	background-color:  rgba(43, 73, 136, 0.521);
+.producto:hover {
+	background-color: rgba(43, 73, 136, 0.521);
 }
 
-.imagen{
+.imagen {
 	width: 30px;
 	height: 30px;
 }
 
-.btn {	
+.btn {
 	background-color: var(--accent-color);
 	border: none;
-  	padding: 0.5rem;
-  	text-align: center;
-  	text-decoration: none;
-  	display: inline-block;
-  	font-size: 16px;
+	padding: 0.5rem;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 }
-button{
+button {
 	padding: 50px;
 }
 
-.btn:hover{
+.btn:hover {
 	background-color: var(--btn-active-color);
 }
