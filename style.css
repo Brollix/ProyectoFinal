@@ -2,7 +2,7 @@
 	--bg-color: rgb(13, 24, 39);
 	--accent-color: rgb(255, 204, 108);
 	--contrast-color: #3d65bd;
-	--btn-active-color: #5e421e;
+	--btn-active-color: #e7880c;
 }
 
 body {
@@ -10,110 +10,58 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
-/* nav{
-    display: flex;
-    padding: 2% 6%;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links{
-    flex: 1;
-    color: aliceblue;
-} */
-
 .titulo {
 	color: white;
 	text-align: center;
 }
 
-.contenedor-principal {
-	display: grid;
-	grid-template-columns: 3fr 1fr;
-}
-
-#contenedor-productos {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+#lista-productos{
 	margin: auto;
 }
 
-#contenedor-carrito {
-	transition: 250ms;
-	background-color: transparent;
-	display: grid;
-	color: white;
-	position: fixed;
-	right: 0;
-	padding-right: 1.5rem;
-	overflow-y: scroll;
-	max-height: 85%;
-}
-
-#calculadora-precio {
-	color: white;
-	position: fixed;
-	right: 500px;
-	background-color: #3d65bd;
-	padding: 0.5rem;
-}
-
-#aviso{
+.producto, th{
 	color: white;
 }
-
-img {
-	width: 150px;
-	height: auto;
-}
-
-.card {
-	transition: 250ms;
-}
-
-.card hr {
-	border-color: var(--accent-color);
-}
-
-.card h5 {
-	padding: 10px;
-}
-
-.producto {
-	margin: auto;
-	color: white;
+th{
 	padding: 1rem;
 }
 
-.btn {
-	size: 1.2rem;
+#block-vacio{
+	visibility: hidden;
+}
+
+.producto{
+	background-color: rgba(59, 100, 187, 0.521);
+	height: 3rem;
+}
+
+td{
+	text-align: center;
+
+}
+
+.producto:hover{
+	background-color:  rgba(43, 73, 136, 0.521);
+}
+
+.imagen{
+	width: 30px;
+	height: 30px;
+}
+
+.btn {	
 	background-color: var(--accent-color);
 	border: none;
-	margin: auto;
-	padding: 15px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	border-radius: 1rem;
-	height: fit-content;
-	transition: 150ms;
+  	padding: 0.5rem;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+}
+button{
+	padding: 50px;
 }
 
-.card:hover {
-	transform: scale(110%);
-	transition: 250ms;
-	transition-timing-function: ease;
-}
-
-.btn:hover {
-	background-color: var(--contrast-color);
-	color: white;
-	transition: 150ms;
-	transition-timing-function: ease;
-}
-.btn:active {
+.btn:hover{
 	background-color: var(--btn-active-color);
-	transition: 50ms;
-	transition-timing-function: ease;
 }

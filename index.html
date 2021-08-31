@@ -13,7 +13,7 @@
 		<title>Document</title>
 		<link rel="stylesheet" href="style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 		<script defer src="pc_parts.js"></script>
 		<script defer src="main.js"></script>
 		
@@ -24,9 +24,18 @@
 			<h4><u>No Funciona ni para Atrás.</u></h4>
 		</div>
 
-		<div class="contenedor-principal">
-			<table id="contenedor-productos"></table>
-			<thead></thead>
+		<div id="contenedor-principal">
+			<div id="seccion-filtros"></div>
+			<div id="contenedor-productos">				
+				<table id='lista-productos'>
+					<th id='block-vacio'></th>
+					<th>Marca</th>
+					<th>Socket</th>
+					<th>Precio</th>
+					<th id='block-vacio'></th>
+				</table>
+			</div>
+			
 		</div>
 	</body>
 </html>

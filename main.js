@@ -2,10 +2,10 @@
 let carrito = [];
 let subtotal;
 let precio_final = 0;
+
 const impuesto = 1.21;
 
-const contenedor_productos = document.getElementById('contenedor-productos');
-const contenedor_carrito = document.getElementById('contenedor-carrito');
+const lista_productos = document.getElementById('lista-productos');
 
 //#endregion
 
@@ -38,37 +38,53 @@ function show_products(productos) {
 		let div_producto = document.createElement('tr');
 		div_producto.className = 'producto';
 
-		let marca = document.createElement('th');
+		let marca = document.createElement('td');
 		marca.className = 'marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
-		let socket = document.createElement('th');
+		let socket = document.createElement('td');
 		socket.className = 'socket';
-		socket.textContent = `Socket ${producto.Socket}`;
+		socket.textContent = producto.Socket;
 
-		let imagen = document.createElement('th');
+		let imagen_div = document.createElement('td');
+		let imagen = document.createElement( 'img' );
+		imagen_div.appendChild(imagen);
 		imagen.src = '../img/' + producto.Imagen;
 		imagen.className = 'imagen';
 
-		let precio = document.createElement('th');
+		let precio = document.createElement('td');
 		precio.className = 'precio';
 		precio.textContent = '$' + producto.Precio;
 
-		let boton = document.createElement('button');
+		let boton_div = document.createElement('td')
+		let boton = document.createElement( 'button' );
+		boton_div.appendChild(boton);
 		boton.innerHTML = 'Añadir al carrito';
 		boton.className = 'btn';
-		boton.addEventListener('click', () => {
-			add_to_cart(producto);
-			boton.innerHTML = 'Agregado';
-		});
 
+		let selected = false;
+
+		boton.addEventListener( 'click', () =>
+		{
+			selected = !selected;
+			if (selected == true) {
+				add_to_cart(producto);
+				boton.innerHTML = 'Eliminar del carrito';
+			} else if (selected == false) {
+				if (carrito != null) {
+					remove_from_cart(producto);
+					boton.innerHTML = 'Añadir al carrito';
+				}
+			}
+		});
+		
+		div_producto.appendChild(imagen_div);
 		div_producto.appendChild(marca);
 		div_producto.appendChild(socket);
-		div_producto.appendChild(imagen);
 		div_producto.appendChild(precio);
-		div_producto.appendChild(boton);
+		div_producto.appendChild(boton_div);
 
-		contenedor_productos.appendChild(div_producto);
+		lista_productos.appendChild(div_producto);
 	});
 }
 
@@ -77,10 +93,10 @@ function add_to_cart(item) {
 	sort_cart(carrito);
 }
 
-/* function remove_from_cart(item) {
-	contenedor_carrito.removeChild(document.getElementById(item.id));
+function remove_from_cart(item) {
+	//contenedor_carrito.removeChild(document.getElementById(item.id));
 	carrito.splice(carrito.indexOf(item));
-} */
+}
 
 function add_price(array) {
 	for (let i = 0; i < array.length; i++) {
@@ -88,6 +104,7 @@ function add_price(array) {
 	}
 	return subtotal;
 }
+
 
 /* function check_compatible(item) {
 	if (item.length > 1) {
