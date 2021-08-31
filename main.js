@@ -1,7 +1,5 @@
 //#region Variables
 
-console.log(productos);
-
 let carrito = [];
 let subtotal;
 let precio_final = 0;
