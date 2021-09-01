@@ -49,7 +49,7 @@ function show_products(productos) {
 		let imagen_div = document.createElement('td');
 		let imagen = document.createElement('img');
 		imagen_div.appendChild(imagen);
-		imagen.src = '../img/' + producto.Imagen;
+		imagen.src = './img/' + producto.Imagen;
 		imagen.className = 'imagen';
 
 		let precio = document.createElement('td');
