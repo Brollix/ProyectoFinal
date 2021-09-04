@@ -2,24 +2,24 @@
 let carrito = [];
 let subtotal;
 let precio_final = 0;
-const title_text = 'BlackComponents | Build your PC'
-const icon_img = '/img/icon.svg'
+const title_text = 'BlackComponents | Build your PC';
+const icon_img = '/img/icon.svg';
 
 const impuesto = 1.21;
 
 let title = document.getElementById('title-text');
-title.innerHTML = title_text
+title.innerHTML = title_text;
 
-let icon = document.createElement('link')
-icon.rel = 'icon'
-icon.type = 'image/svg'
-icon.href = icon_img
+let icon = document.createElement('link');
+icon.rel = 'icon';
+icon.type = 'image/svg';
+icon.href = icon_img;
 
-let doc_title = document.createElement('title')
+let doc_title = document.createElement('title');
 doc_title.textContent = title_text;
 
-document.head.appendChild(icon)
-document.head.appendChild(doc_title)
+document.head.appendChild(icon);
+document.head.appendChild(doc_title);
 //#endregion
 
 //#region Llamado a funciones y/o metodos
@@ -71,7 +71,7 @@ function show_products(productos) {
 		precio.textContent = '$' + producto.Precio;
 
 		let boton_div = document.createElement('td');
-		boton_div.className = 'boton-div'
+		boton_div.className = 'boton-div';
 		let boton = document.createElement('button');
 		boton_div.appendChild(boton);
 		boton.innerHTML = 'Add';
