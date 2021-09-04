@@ -2,11 +2,24 @@
 let carrito = [];
 let subtotal;
 let precio_final = 0;
+const title_text = 'BlackComponents | Build your PC'
+const icon_img = '/img/icon.svg'
 
 const impuesto = 1.21;
 
-const lista_productos = document.getElementById('lista-productos');
+let title = document.getElementById('title-text');
+title.innerHTML = title_text
 
+let icon = document.createElement('link')
+icon.rel = 'icon'
+icon.type = 'image/svg'
+icon.href = icon_img
+
+let doc_title = document.createElement('title')
+doc_title.textContent = title_text;
+
+document.head.appendChild(icon)
+document.head.appendChild(doc_title)
 //#endregion
 
 //#region Llamado a funciones y/o metodos
@@ -34,6 +47,7 @@ function filter_by_socket(array, socket) {
 }
 
 function show_products(productos) {
+	const lista_productos = document.getElementById('lista-productos');
 	productos.forEach((producto) => {
 		let div_producto = document.createElement('tr');
 		div_producto.className = 'producto';
@@ -57,9 +71,10 @@ function show_products(productos) {
 		precio.textContent = '$' + producto.Precio;
 
 		let boton_div = document.createElement('td');
+		boton_div.className = 'boton-div'
 		let boton = document.createElement('button');
 		boton_div.appendChild(boton);
-		boton.innerHTML = 'Añadir al carrito';
+		boton.innerHTML = 'Add';
 		boton.className = 'btn';
 		boton.style.backgroundColor = 'rgb(255, 204, 108)';
 
@@ -69,12 +84,12 @@ function show_products(productos) {
 			selected = !selected;
 			if (selected == true) {
 				add_to_selected(producto);
-				boton.innerHTML = 'Eliminar del carrito';
+				boton.innerHTML = 'Remove';
 				boton.style.backgroundColor = 'red';
 			} else if (selected == false) {
 				if (carrito != null) {
 					remove_from_selected(producto);
-					boton.innerHTML = 'Añadir al carrito';
+					boton.innerHTML = 'Add';
 					boton.style.backgroundColor = 'rgb(255, 204, 108)';
 				}
 			}
@@ -94,14 +109,14 @@ function add_to_selected(item) {
 	item = JSON.stringify(item);
 	carrito.push(item);
 	localStorage.setItem('carrito', carrito);
-
 	console.log(localStorage.getItem('carrito'));
 }
 
 function remove_from_selected(item) {
-	//contenedor_carrito.removeChild(document.getElementById(item.id));
+	// contenedor_carrito.removeChild(document.getElementById(item.id));
 	carrito.splice(carrito.indexOf(item));
 	localStorage.setItem('carrito', carrito);
+	console.log(localStorage.getItem('carrito'));
 }
 
 function add_price(array) {
