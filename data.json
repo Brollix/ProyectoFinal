@@ -1,0 +1,18 @@
+[
+    {"Tipo":"Procesador","Marca":"Intel Core","Serie":"i3","Socket":1151,"Tamaño":"","Imagen":"i3.png","Precio":30000},
+    {"Tipo":"Procesador","Marca":"Intel Core","Serie":"i5","Socket":1151,"Tamaño":"","Imagen":"i5.png","Precio":25000},
+    {"Tipo":"Procesador","Marca":"Intel Core","Serie":"i7","Socket":1200,"Tamaño":"","Imagen":"i7.png","Precio":60000},
+    {"Tipo":"Procesador","Marca":"Intel Core","Serie":"i9","Socket":1200,"Tamaño":"","Imagen":"i9.png","Precio":73000},
+    {"Tipo":"Procesador","Marca":"AMD Ryzen","Serie":3,"Socket":"AM4","Tamaño":"","Imagen":"r3.png","Precio":37000},
+    {"Tipo":"Procesador","Marca":"AMD Ryzen","Serie":5,"Socket":"AM4","Tamaño":"","Imagen":"r5.png","Precio":42000},
+    {"Tipo":"Procesador","Marca":"AMD Ryzen","Serie":7,"Socket":"AM4","Tamaño":"","Imagen":"r7.png","Precio":65000},
+    {"Tipo":"Procesador","Marca":"AMD Ryzen","Serie":9,"Socket":"AM4","Tamaño":"","Imagen":"r9.png","Precio":78000},
+    {"Tipo":"Motherboard","Marca":"Asus","Serie":"B85","Socket":1151,"Tamaño":"","Imagen":"B85.png","Precio":20000},
+    {"Tipo":"Motherboard","Marca":"Gigabyte","Serie":"Z370","Socket":1200,"Tamaño":"","Imagen":"Z370.png","Precio":33000},
+    {"Tipo":"Motherboard","Marca":"Gigabyte","Serie":"Z590","Socket":1200,"Tamaño":"","Imagen":"Z590.png","Precio":40000},
+    {"Tipo":"Motherboard","Marca":"Asus","Serie":"B550","Socket":"AM4","Tamaño":"","Imagen":"B550.png","Precio":25000},
+    {"Tipo":"Motherboard","Marca":"Asus","Serie":"X570","Socket":"AM4","Tamaño":"","Imagen":"X570.png","Precio":35000},
+    {"Tipo":"Motherboard","Marca":"Gigabyte","Serie":"A570","Socket":"AM4","Tamaño":"","Imagen":"A570.png","Precio":39000},
+    {"Tipo":"RAM","Marca":"Kingston","Serie":"Fury","Socket":"DDR3","Tamaño":4,"Imagen":"Fury.png","Precio":4600},
+    {"Tipo":"RAM","Marca":"Kingston","Serie":"Predator","Socket":"DDR4","Tamaño":8,"Imagen":"Predator.png","Precio":8500}
+]

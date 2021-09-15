@@ -2,21 +2,28 @@
 	--bg-color: rgb(13, 24, 39);
 	--contrast-color: #3d65bd;
 	--btn-active-color: #e7880c;
+	--btn-color: rgb(255, 204, 108);
 }
 
 body {
 	background-color: var(--bg-color);
+	color: black;
 	font-family: 'Oxygen', sans-serif;
 }
 
 .titulo {
 	color: white;
 	text-align: center;
+	transition: 150ms;
 }
 
-#contenedor-principal {
-	display: grid;
-	grid-template-columns: 0.5fr 3fr;
+#title-text {
+	transition: 150ms;
+}
+
+.titulo:hover {
+	background-color: var(--contrast-color);
+	cursor: pointer;
 }
 
 #lista-productos {
@@ -26,34 +33,42 @@ body {
 .producto,
 th {
 	color: white;
-}
-th {
 	padding: 2rem;
 }
 
-#block-vacio {
+.block-vacio {
 	visibility: hidden;
 }
 
 .producto {
-	background-color: rgba(59, 100, 187, 0.521);
+	background-color: rgb(44, 56, 83);
 	height: 3rem;
 }
 
+.producto:hover {
+	background-color: rgb(38, 45, 65);
+}
+
 td {
+	height: 40px;
+	width: 250px;
 	text-align: center;
 }
 
-.producto:hover {
-	background-color: rgba(43, 73, 136, 0.521);
+.imagen {
+	width: 50px;
 }
 
-.imagen {
-	width: 30px;
-	height: 30px;
+.hover{
+	transition: 250ms;
+}
+
+.hover:hover{
+	transform: scale(150%);
 }
 
 .btn {
+	background-color: var(--btn-color);
 	border: none;
 	padding: 0.5rem;
 	text-align: center;
@@ -73,7 +88,10 @@ td {
 button {
 	padding: 50px;
 }
+button:hover{
+	background-color: #8b6c44;
+}
 
 .btn:hover {
-	background-color: var(--btn-active-color);
+	
 }
