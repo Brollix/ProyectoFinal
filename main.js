@@ -2,13 +2,7 @@
 let lista = [];
 let subtotal;
 let precio_final = 0;
-const title_text = 'BlackComponents | Build your PC';
 const icon_img = '/img/icon.svg';
-
-const impuesto = 1.21;
-
-let title = document.getElementById('title-text');
-title.innerHTML = title_text;
 
 let icon = document.createElement('link');
 icon.rel = 'icon';
@@ -35,16 +29,6 @@ show_products(productos);
 //#endregion
 
 //#region Funciones
-function filter_by_socket(array, socket) {
-	let filtered_array = [];
-	for (let i = 0; i < array.length; i++) {
-		if (array[i].Socket == socket) {
-			filtered_array.push(array[i]);
-		}
-	}
-	console.log(filtered_array);
-	return filtered_array;
-}
 
 function show_products(productos) {
 	const lista_productos = document.getElementById('lista-productos');
@@ -52,13 +36,17 @@ function show_products(productos) {
 		let div_producto = document.createElement('tr');
 		div_producto.className = 'producto';
 
+		let tipo = document.createElement('td');
+		tipo.className = 'tipo';
+		tipo.textContent = `${producto.Tipo}`;
+
 		let marca = document.createElement('td');
 		marca.className = 'marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
 		let socket = document.createElement('td');
 		socket.className = 'socket';
-		socket.textContent = producto.Socket;
+		socket.textContent += `${producto.Socket[0]} ${producto.Socket[1]}`;
 
 		let imagen_div = document.createElement('td');
 		let imagen = document.createElement('img');
@@ -66,40 +54,32 @@ function show_products(productos) {
 		imagen.src = '/img/' + producto.Imagen;
 		imagen.className = 'imagen';
 
+		let precio_div = document.createElement('div');
 		let precio = document.createElement('td');
+		precio_div.className = 'precio-div';
+		precio_div.appendChild(precio);
 		precio.className = 'precio';
 		precio.textContent = '$' + producto.Precio;
 
-		let boton_div = document.createElement('td');
-		boton_div.className = 'boton-div';
-		let boton = document.createElement('button');
-		boton_div.appendChild(boton);
+		let boton_div = document.createElement('div')
+		boton_div.className = 'boton-div'
+
+		let boton = document.createElement('button');		
 		boton.innerHTML = 'Add';
 		boton.className = 'btn';
-		boton.style.backgroundColor = 'rgb(255, 204, 108)';
-
-		let selected = false;
 
 		boton.addEventListener('click', () => {
-			selected = !selected;
-			if (selected == true) {
-				add_to_selected(producto);
-				boton.innerHTML = 'Remove';
-				boton.style.backgroundColor = 'red';
-			} else if (selected == false) {
-				if (lista != null) {
-					remove_from_selected(producto);
-					boton.innerHTML = 'Add';
-					boton.style.backgroundColor = 'rgb(255, 204, 108)';
-				}
-			}
+			add_to_selected(producto);
+			filter_by_socket(productos, producto.Socket);
 		});
 
 		div_producto.appendChild(imagen_div);
+		div_producto.appendChild(tipo);
 		div_producto.appendChild(marca);
 		div_producto.appendChild(socket);
-		div_producto.appendChild(precio);
-		div_producto.appendChild(boton_div);
+		boton_div.appendChild(boton);
+		precio_div.appendChild(boton_div);
+		div_producto.appendChild(precio_div);
 
 		lista_productos.appendChild(div_producto);
 	});
@@ -107,13 +87,24 @@ function show_products(productos) {
 
 //#endregion
 
+//funcion para filtrar items por socket
+
+function filter_by_socket(array, socket) {
+	let filtered_array = [];
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].Socket == socket) {
+			filtered_array.push(array[i]);
+		}
+	}
+	return filtered_array;
+}
+
 //funcion para agregar items al JSON Storage y array de items
 
 function add_to_selected(item) {
 	item = JSON.stringify(item);
 	lista.push(item);
 	localStorage.setItem('lista', lista);
-	console.log(localStorage.getItem('lista'));
 }
 
 //funcion para borrar items del JSON Storage y array de items
@@ -122,6 +113,5 @@ function remove_from_selected(item) {
 	// contenedor_carrito.removeChild(document.getElementById(item.id));
 	lista.splice(lista.indexOf(item));
 	localStorage.setItem('lista', lista);
-	console.log(localStorage.getItem('lista'));
 }
 //#endregion
