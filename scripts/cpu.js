@@ -1,7 +1,7 @@
 //#region Variables & Constantes
 
 let cpu = [];
-let _tipo = 'CPU'
+let _tipo = 'CPU';
 
 //#endregion
 
@@ -84,7 +84,7 @@ function show_products(productos) {
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			location.assign('index.html');
+			location.assign('../index.html');
 		});
 
 		div_producto.appendChild(number);
@@ -121,10 +121,9 @@ function filter_by_socket(array, socket) {
 	for (let i = 0; i < array.length; i++) {
 		if (array[i].Socket[0] == socket) {
 			filtered_array.push(array[i]);
-
 		} else if (array[i].Socket[1] == socket) {
 			filtered_array.push(array[i]);
-		} 
+		}
 	}
 	return filtered_array;
 }

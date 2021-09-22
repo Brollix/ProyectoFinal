@@ -9,8 +9,8 @@ document.head.appendChild(icon);
 
 let tipos = ['CPU', 'Motherboard', 'RAM'];
 
-let lista = []
-let subtotal = 0
+let lista = [];
+let subtotal = 0;
 
 show_options(productos);
 
@@ -25,25 +25,21 @@ if (JSON.parse(localStorage.getItem('ram')) != null) {
 }
 
 for (let i = 0; i < lista.length; i++) {
-	subtotal += lista[i].Precio	
+	subtotal += lista[i].Precio;
 }
 
-
-let subtotal_usd = document.getElementById('subtotal-usd')
-subtotal_usd.innerHTML = `USD $${subtotal}`
+let subtotal_usd = document.getElementById('subtotal-usd');
+subtotal_usd.innerHTML = `USD $${subtotal}`;
 
 let subtotal_ars = document.getElementById('subtotal-ars');
-get_dolar(url)
+get_dolar(url);
 
-async function get_dolar(url){
-	const response = await fetch(url)
-	const data = await response.json()
+async function get_dolar(url) {
+	const response = await fetch(url);
+	const data = await response.json();
 
-	subtotal_ars.textContent = 'ARS $' + data.blue.value_avg * subtotal
+	subtotal_ars.textContent = 'ARS $' + data.blue.value_avg * subtotal;
 }
-
-
-
 
 // funcion que muestra las opciones para agregar los componentes
 
@@ -87,7 +83,7 @@ function show_options() {
 			seleccion_btn.textContent = `Elegi tu ${tipo.toLowerCase()}`;
 			seleccion_btn.className = 'btn';
 			seleccion_btn.addEventListener('click', function () {
-				location.assign(`${tipo}.html`);
+				location.assign(`/pages/${tipo}.html`);
 			});
 
 			seleccion.appendChild(seleccion_btn);
@@ -103,7 +99,7 @@ function show_options() {
             	${seleccionado.Marca} 
             	${seleccionado.Serie}
 				${seleccionado.Tamaño}GB
-				Socket ${seleccionado.Socket[1]}`
+				Socket ${seleccionado.Socket[1]}`;
 			} else {
 				seleccion_txt.innerHTML = `
             	${seleccionado.Marca} 

@@ -66,7 +66,7 @@ function show_products(productos) {
 
 		let socket = document.createElement('td');
 		socket.className = 'td__socket';
-		socket.textContent += `${producto.Socket[0]} ${producto.Socket[1]}`;
+		socket.textContent += `LGA ${producto.Socket[0]} ${producto.Socket[1]}`;
 
 		let imagen_div = document.createElement('td');
 		let imagen = document.createElement('img');
@@ -84,7 +84,7 @@ function show_products(productos) {
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			location.assign('index.html');
+			location.assign('../index.html');
 		});
 
 		div_producto.appendChild(number);
