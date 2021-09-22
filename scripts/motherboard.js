@@ -68,7 +68,7 @@ function show_products(productos) {
 		let imagen_div = document.createElement('td');
 		let imagen = document.createElement('img');
 		imagen_div.appendChild(imagen);
-		imagen.src = '/img/' + producto.Imagen;
+		imagen.src = '../img/' + producto.Imagen;
 		imagen.className = 'td__imagen';
 
 		let precio = document.createElement('td');
@@ -81,7 +81,7 @@ function show_products(productos) {
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			location.assign('/index.html');
+			location.assign('../index.html');
 		});
 
 		div_producto.appendChild(number);
