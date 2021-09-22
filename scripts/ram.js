@@ -87,7 +87,7 @@ function show_products(productos) {
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			location.assign('../index.html');
+			location.assign('./index.html');
 		});
 
 		div_producto.appendChild(number);
