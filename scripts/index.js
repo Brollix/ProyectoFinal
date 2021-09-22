@@ -76,7 +76,7 @@ function show_options() {
 			seleccion_btn.textContent = `Elegi tu ${tipo.toLowerCase()}`;
 			seleccion_btn.className = 'btn';
 			seleccion_btn.addEventListener('click', function () {
-				location.assign(`./pages/${tipo.toLowerCase()}.html`);
+				location.assign(`../pages/${tipo.toLowerCase()}.html`);
 			});
 
 			seleccion.appendChild(seleccion_btn);
