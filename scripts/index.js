@@ -110,7 +110,7 @@ function show_options() {
 				location.reload();
 			});
 
-			seleccion_img.src = `./img/${seleccionado.Imagen}`;
+			seleccion_img.src = `../img/${seleccionado.Imagen}`;
 			precio.textContent = `USD $${seleccionado.Precio}`;
 
 			seleccion.appendChild(deseleccion);
