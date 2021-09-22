@@ -87,7 +87,7 @@ function show_products(productos) {
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			location.href = '../index.html';
+			location.replace('../index.html');
 		});
 
 		div_producto.appendChild(number);
