@@ -1,12 +1,5 @@
 let url = 'https://api.bluelytics.com.ar/v2/latest';
 
-let icon = document.createElement('link');
-const icon_img = '../img/icon.svg';
-icon.rel = 'icon';
-icon.type = '/img/svg';
-icon.href = icon_img;
-document.head.appendChild(icon);
-
 let tipos = ['CPU', 'Motherboard', 'RAM'];
 
 let lista = [];
