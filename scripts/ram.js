@@ -63,9 +63,9 @@ function show_products(productos) {
 		marca.className = 'td__marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
-		let tamaño = document.createElement('td')
-		tamaño.className = 'td__tamaño'
-		tamaño.textContent = `${producto.Tamaño}GB`
+		let tamaño = document.createElement('td');
+		tamaño.className = 'td__tamaño';
+		tamaño.textContent = `${producto.Tamaño}GB`;
 
 		let socket = document.createElement('td');
 		socket.className = 'td__socket';
@@ -94,7 +94,7 @@ function show_products(productos) {
 		div_producto.appendChild(imagen_div);
 		div_producto.appendChild(tipo);
 		div_producto.appendChild(marca);
-		div_producto.appendChild(tamaño)
+		div_producto.appendChild(tamaño);
 		div_producto.appendChild(socket);
 		div_producto.appendChild(precio);
 		precio.appendChild(boton);

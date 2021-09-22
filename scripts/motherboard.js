@@ -29,10 +29,7 @@ if (
 } else if (localStorage.getItem('cpu') != null) {
 	cpu = JSON.parse(localStorage.getItem('cpu'));
 	show_products(
-		filter_by_socket(
-			filter_by_type(productos, _tipo),
-			cpu.Socket[0]
-		)
+		filter_by_socket(filter_by_type(productos, _tipo), cpu.Socket[0])
 	);
 } else if (localStorage.getItem('ram') != null) {
 	ram = JSON.parse(localStorage.getItem('ram'));
