@@ -24,6 +24,8 @@ for (let i = 0; i < lista.length; i++) {
 let subtotal_usd = document.getElementById('subtotal-usd');
 subtotal_usd.innerHTML = `USD $${subtotal}`;
 
+// API para el Dolar BLUE
+
 let subtotal_ars = document.getElementById('subtotal-ars');
 get_dolar(url);
 
@@ -76,7 +78,7 @@ function show_options() {
 			seleccion_btn.textContent = `Elegi tu ${tipo.toLowerCase()}`;
 			seleccion_btn.className = 'btn';
 			seleccion_btn.addEventListener('click', function () {
-				location.assign(`/${tipo.toLowerCase()}.html`);
+				location.assign(`./pages/${tipo.toLowerCase()}.html`);
 			});
 
 			seleccion.appendChild(seleccion_btn);
