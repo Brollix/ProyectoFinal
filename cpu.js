@@ -1,7 +1,7 @@
 //#region Variables & Constantes
-// let url = 'https://api.bluelytics.com.ar/v2/latest';
 
 let cpu = [];
+let _tipo = 'CPU'
 
 //#endregion
 
@@ -17,11 +17,29 @@ for (i = 0; i < length; i++) {
 	productos[i].id = i;
 	//console.log(`Prod ${productos[i].id}`);
 }
-if (localStorage.getItem('CPU') == null) {
-	show_products(filter_by_socket(productos, 'CPU'));
-} else 
 
+// filtra los productos segun los agregados el Local Storage
 
+if (
+	localStorage.getItem('cpu') == null &&
+	localStorage.getItem('motherboard') == null &&
+	localStorage.getItem('ram') == null
+) {
+	show_products(filter_by_type(productos, _tipo));
+} else if (localStorage.getItem('motherboard') != null) {
+	motherboard = JSON.parse(localStorage.getItem('motherboard'));
+	show_products(
+		filter_by_socket(
+			filter_by_type(productos, _tipo),
+			motherboard.Socket[0]
+		)
+	);
+} else if (localStorage.getItem('ram') != null) {
+	ram = JSON.parse(localStorage.getItem('ram'));
+	show_products(
+		filter_by_socket(filter_by_type(productos, _tipo), ram.Socket[1])
+	);
+}
 
 //#endregion
 
@@ -83,15 +101,9 @@ function show_products(productos) {
 	});
 }
 
-/* async function get_dolar(url) {
-	const response = await fetch(url);
-	const data = await response.json();
-	blue = data.blue.value_sell;
-} */
+//funcion para filtrar items por tipo
 
-//funcion para filtrar items por socket
-
-function filter_by_socket(array, tipo) {
+function filter_by_type(array, tipo) {
 	let filtered_array = [];
 	for (let i = 0; i < array.length; i++) {
 		if (array[i].Tipo == tipo) {
@@ -101,19 +113,27 @@ function filter_by_socket(array, tipo) {
 	return filtered_array;
 }
 
+//funcion para filtrar items por socket
+
+function filter_by_socket(array, socket) {
+	let filtered_array = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].Socket[0] == socket) {
+			filtered_array.push(array[i]);
+
+		} else if (array[i].Socket[1] == socket) {
+			filtered_array.push(array[i]);
+		} 
+	}
+	return filtered_array;
+}
+
 //funcion para agregar items al JSON Storage y array de items
 
 function add_to_selected(item) {
 	item = JSON.stringify(item);
 	cpu.push(item);
-	localStorage.setItem('cpu', cpu);
-}
-
-//funcion para borrar items del JSON Storage y array de items
-
-function remove_from_selected(item) {
-	// contenedor_carrito.removeChild(document.getElementById(item.id));
-	cpu.splice(cpu.indexOf(item));
 	localStorage.setItem('cpu', cpu);
 }
 

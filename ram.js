@@ -1,7 +1,7 @@
 //#region Variables & Constantes
-// let url = 'https://api.bluelytics.com.ar/v2/latest';
 
 let ram = [];
+let _tipo = 'RAM';
 
 //#endregion
 
@@ -18,7 +18,27 @@ for (i = 0; i < length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-show_products(filter_by_socket(productos, 'RAM'));
+// filtra los productos segun los agregados el Local Storage
+
+if (
+	localStorage.getItem('cpu') == null &&
+	localStorage.getItem('motherboard') == null
+) {
+	show_products(filter_by_type(productos, _tipo));
+} else if (localStorage.getItem('motherboard') != null) {
+	motherboard = JSON.parse(localStorage.getItem('motherboard'));
+	show_products(
+		filter_by_socket(
+			filter_by_type(productos, _tipo),
+			motherboard.Socket[1]
+		)
+	);
+} else if (localStorage.getItem('cpu') != null) {
+	cpu = JSON.parse(localStorage.getItem('cpu'));
+	show_products(
+		filter_by_socket(filter_by_type(productos, _tipo), cpu.Socket[1])
+	);
+}
 
 //#endregion
 
@@ -43,9 +63,13 @@ function show_products(productos) {
 		marca.className = 'td__marca';
 		marca.textContent = `${producto.Marca} ${producto.Serie}`;
 
+		let tamaño = document.createElement('td')
+		tamaño.className = 'td__tamaño'
+		tamaño.textContent = `${producto.Tamaño}GB`
+
 		let socket = document.createElement('td');
 		socket.className = 'td__socket';
-		socket.textContent += `${producto.Socket[0]} ${producto.Socket[1]}`;
+		socket.textContent += `${producto.Socket[1]}`;
 
 		let imagen_div = document.createElement('td');
 		let imagen = document.createElement('img');
@@ -70,6 +94,7 @@ function show_products(productos) {
 		div_producto.appendChild(imagen_div);
 		div_producto.appendChild(tipo);
 		div_producto.appendChild(marca);
+		div_producto.appendChild(tamaño)
 		div_producto.appendChild(socket);
 		div_producto.appendChild(precio);
 		precio.appendChild(boton);
@@ -86,9 +111,9 @@ function show_products(productos) {
 	blue = data.blue.value_sell;
 } */
 
-//funcion para filtrar items por socket
+//funcion para filtrar items por tipo
 
-function filter_by_socket(array, tipo) {
+function filter_by_type(array, tipo) {
 	let filtered_array = [];
 	for (let i = 0; i < array.length; i++) {
 		if (array[i].Tipo == tipo) {
@@ -98,19 +123,25 @@ function filter_by_socket(array, tipo) {
 	return filtered_array;
 }
 
-//funcion para agregar items al JSON Storage y array de items
+//funcion para filtrar items por socket
 
+function filter_by_socket(array, socket) {
+	let filtered_array = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].Socket[0] == socket) {
+			filtered_array.push(array[i]);
+		} else if (array[i].Socket[1] == socket) {
+			filtered_array.push(array[i]);
+		}
+	}
+	return filtered_array;
+}
+
+//funcion para agregar items al JSON Storage y array de items
 function add_to_selected(item) {
 	item = JSON.stringify(item);
 	ram.push(item);
-	localStorage.setItem('ram', ram);
-}
-
-//funcion para borrar items del JSON Storage y array de items
-
-function remove_from_selected(item) {
-	// contenedor_carrito.removeChild(document.getElementById(item.id));
-	ram.splice(ram.indexOf(item));
 	localStorage.setItem('ram', ram);
 }
 

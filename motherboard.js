@@ -1,7 +1,7 @@
 //#region Variables & Constantes
-// let url = 'https://api.bluelytics.com.ar/v2/latest';
 
 let motherboard = [];
+let _tipo = 'Motherboard';
 
 //#endregion
 
@@ -18,7 +18,28 @@ for (i = 0; i < length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-show_products(filter_by_socket(productos, 'Motherboard'));
+// filtra los productos segun los agregados el Local Storage
+
+if (
+	localStorage.getItem('cpu') == null &&
+	localStorage.getItem('motherboard') == null &&
+	localStorage.getItem('ram') == null
+) {
+	show_products(filter_by_type(productos, _tipo));
+} else if (localStorage.getItem('cpu') != null) {
+	cpu = JSON.parse(localStorage.getItem('cpu'));
+	show_products(
+		filter_by_socket(
+			filter_by_type(productos, _tipo),
+			cpu.Socket[0]
+		)
+	);
+} else if (localStorage.getItem('ram') != null) {
+	ram = JSON.parse(localStorage.getItem('ram'));
+	show_products(
+		filter_by_socket(filter_by_type(productos, _tipo), ram.Socket[1])
+	);
+}
 
 //#endregion
 
@@ -86,12 +107,27 @@ function show_products(productos) {
 	blue = data.blue.value_sell;
 } */
 
-//funcion para filtrar items por socket
+//funcion para filtrar items por tipo
 
-function filter_by_socket(array, tipo) {
+function filter_by_type(array, tipo) {
 	let filtered_array = [];
 	for (let i = 0; i < array.length; i++) {
 		if (array[i].Tipo == tipo) {
+			filtered_array.push(array[i]);
+		}
+	}
+	return filtered_array;
+}
+
+//funcion para filtrar items por socket
+
+function filter_by_socket(array, socket) {
+	let filtered_array = [];
+
+	for (let i = 0; i < array.length; i++) {
+		if (array[i].Socket[0] == socket) {
+			filtered_array.push(array[i]);
+		} else if (array[i].Socket[1] == socket) {
 			filtered_array.push(array[i]);
 		}
 	}
@@ -105,13 +141,4 @@ function add_to_selected(item) {
 	motherboard.push(item);
 	localStorage.setItem('motherboard', motherboard);
 }
-
-//funcion para borrar items del JSON Storage y array de items
-
-function remove_from_selected(item) {
-	// contenedor_carrito.removeChild(document.getElementById(item.id));
-	motherboard.splice(motherboard.indexOf(item));
-	localStorage.setItem('motherboard', motherboard);
-}
-
 //#endregion
