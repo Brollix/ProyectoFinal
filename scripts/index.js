@@ -1,4 +1,4 @@
-// let url = 'https://api.bluelytics.com.ar/v2/latest';
+let url = 'https://api.bluelytics.com.ar/v2/latest';
 
 let icon = document.createElement('link');
 const icon_img = '/img/icon.svg';
@@ -9,7 +9,41 @@ document.head.appendChild(icon);
 
 let tipos = ['CPU', 'Motherboard', 'RAM'];
 
+let lista = []
+let subtotal = 0
+
 show_options(productos);
+
+if (JSON.parse(localStorage.getItem('cpu')) != null) {
+	lista.push(JSON.parse(localStorage.getItem('cpu')));
+}
+if (JSON.parse(localStorage.getItem('motherboard')) != null) {
+	lista.push(JSON.parse(localStorage.getItem('motherboard')));
+}
+if (JSON.parse(localStorage.getItem('ram')) != null) {
+	lista.push(JSON.parse(localStorage.getItem('ram')));
+}
+
+for (let i = 0; i < lista.length; i++) {
+	subtotal += lista[i].Precio	
+}
+
+
+let subtotal_usd = document.getElementById('subtotal-usd')
+subtotal_usd.innerHTML = `USD $${subtotal}`
+
+let subtotal_ars = document.getElementById('subtotal-ars');
+get_dolar(url)
+
+async function get_dolar(url){
+	const response = await fetch(url)
+	const data = await response.json()
+
+	subtotal_ars.textContent = 'ARS $' + data.blue.value_avg * subtotal
+}
+
+
+
 
 // funcion que muestra las opciones para agregar los componentes
 
@@ -62,19 +96,19 @@ function show_options() {
 		} else if (localStorage.getItem(`${tipo.toLowerCase()}`) != null) {
 			// si no esta vacio, muestro el componente elegido con su debida informacion relevante,  y la opcion de remover el item, con un boton
 
-			// como la memoria ram tiene una propiedad que los demas productos no tienen, para evitar errores chequeo de forma dinamica si el item seleccionado tiene esa propiedad o no, asi puedo elegir mostrarla o no.
+			// como la memoria ram tiene una propiedad que los demas items no tienen, chequeo si esa propiedad existe, y si existe la muestro, si no, no.
 
 			if (seleccionado.Tamaño != null) {
 				seleccion_txt.innerHTML = `
-            ${seleccionado.Marca} 
-            ${seleccionado.Serie}
-            ${seleccionado.Tamaño}GB
-            Socket ${seleccionado.Socket[1]}`;
+            	${seleccionado.Marca} 
+            	${seleccionado.Serie}
+				${seleccionado.Tamaño}GB
+				Socket ${seleccionado.Socket[1]}`
 			} else {
 				seleccion_txt.innerHTML = `
-            ${seleccionado.Marca} 
-            ${seleccionado.Serie}
-            Socket ${seleccionado.Socket[0]}`;
+            	${seleccionado.Marca} 
+            	${seleccionado.Serie}
+				Socket ${seleccionado.Socket[0]}`;
 			}
 
 			let deseleccion = document.createElement('button');
@@ -85,23 +119,10 @@ function show_options() {
 				location.reload();
 			});
 
-			if (tipo == 'RAM') {
-				let seleccion_btn = document.createElement('button');
-
-				seleccion_btn.textContent = `Agregar Mas`;
-				seleccion_btn.className = 'btn';
-				seleccion_btn.addEventListener('click', function () {
-					location.assign(`${tipo}.html`);
-				});
-
-				seleccion.appendChild(deseleccion);
-				seleccion.appendChild(seleccion_btn);
-			}
-
-			precio.textContent = `USD $${seleccionado.Precio}`;
 			seleccion_img.src = `/img/${seleccionado.Imagen}`;
+			precio.textContent = `USD $${seleccionado.Precio}`;
 
-			console.log(seleccionado);
+			seleccion.appendChild(deseleccion);
 		}
 
 		div_opcion.appendChild(seleccion);
