@@ -6,7 +6,7 @@ let productos = [
 		Socket: ['1151', 'DDR3'],
 		Tamaño: '',
 		Imagen: 'i3.png',
-		Precio: '30000',
+		Precio: '160',
 	},
 	{
 		Tipo: 'CPU',
@@ -15,7 +15,7 @@ let productos = [
 		Socket: ['1151', 'DDR3'],
 		Tamaño: '',
 		Imagen: 'i5.png',
-		Precio: '25000',
+		Precio: '235',
 	},
 	{
 		Tipo: 'CPU',
@@ -24,7 +24,7 @@ let productos = [
 		Socket: ['1200', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'i7.png',
-		Precio: '60000',
+		Precio: '320',
 	},
 	{
 		Tipo: 'CPU',
@@ -33,7 +33,7 @@ let productos = [
 		Socket: ['1200', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'i9.png',
-		Precio: '73000',
+		Precio: '420',
 	},
 	{
 		Tipo: 'CPU',
@@ -42,7 +42,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'r3.png',
-		Precio: '37000',
+		Precio: '200',
 	},
 	{
 		Tipo: 'CPU',
@@ -51,7 +51,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'r5.png',
-		Precio: '42000',
+		Precio: '300',
 	},
 	{
 		Tipo: 'CPU',
@@ -60,7 +60,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'r7.png',
-		Precio: '65000',
+		Precio: '400',
 	},
 	{
 		Tipo: 'CPU',
@@ -69,7 +69,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'r9.png',
-		Precio: '78000',
+		Precio: '560',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -78,7 +78,7 @@ let productos = [
 		Socket: ['1151', 'DDR3'],
 		Tamaño: '',
 		Imagen: 'B85.png',
-		Precio: '20000',
+		Precio: '80',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -87,7 +87,7 @@ let productos = [
 		Socket: ['1200', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'Z370.png',
-		Precio: '33000',
+		Precio: '130',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -96,7 +96,7 @@ let productos = [
 		Socket: ['1200', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'Z590.png',
-		Precio: '40000',
+		Precio: '240',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -105,7 +105,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'B550.png',
-		Precio: '25000',
+		Precio: '195',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -114,7 +114,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'X570.png',
-		Precio: '35000',
+		Precio: '330',
 	},
 	{
 		Tipo: 'Motherboard',
@@ -123,7 +123,7 @@ let productos = [
 		Socket: ['AM4', 'DDR4'],
 		Tamaño: '',
 		Imagen: 'A570.png',
-		Precio: '39000',
+		Precio: '250',
 	},
 	{
 		Tipo: 'RAM',
@@ -132,7 +132,7 @@ let productos = [
 		Socket: ['All', 'DDR3'],
 		Tamaño: '4',
 		Imagen: 'Fury.png',
-		Precio: '4600',
+		Precio: '40',
 	},
 	{
 		Tipo: 'RAM',
@@ -141,6 +141,6 @@ let productos = [
 		Socket: ['All', 'DDR4'],
 		Tamaño: '8',
 		Imagen: 'Predator.png',
-		Precio: '8500',
+		Precio: '75',
 	},
 ];
