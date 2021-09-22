@@ -1,7 +1,7 @@
 //#region Variables & Constantes
 // let url = 'https://api.bluelytics.com.ar/v2/latest';
 
-let cpu = [];
+let ram = [];
 
 //#endregion
 
@@ -17,11 +17,8 @@ for (i = 0; i < length; i++) {
 	productos[i].id = i;
 	//console.log(`Prod ${productos[i].id}`);
 }
-if (localStorage.getItem('CPU') == null) {
-	show_products(filter_by_socket(productos, 'CPU'));
-} else 
 
-
+show_products(filter_by_socket(productos, 'RAM'));
 
 //#endregion
 
@@ -105,16 +102,16 @@ function filter_by_socket(array, tipo) {
 
 function add_to_selected(item) {
 	item = JSON.stringify(item);
-	cpu.push(item);
-	localStorage.setItem('cpu', cpu);
+	ram.push(item);
+	localStorage.setItem('ram', ram);
 }
 
 //funcion para borrar items del JSON Storage y array de items
 
 function remove_from_selected(item) {
 	// contenedor_carrito.removeChild(document.getElementById(item.id));
-	cpu.splice(cpu.indexOf(item));
-	localStorage.setItem('cpu', cpu);
+	ram.splice(ram.indexOf(item));
+	localStorage.setItem('ram', ram);
 }
 
 //#endregion

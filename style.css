@@ -35,6 +35,11 @@ td {
 	max-width: 25px;
 }
 
+.td__seleccion-img{
+	max-width: 50px;
+	max-height: 50px;
+}
+
 .td__precio {
 	text-align: center;
 }
