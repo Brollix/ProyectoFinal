@@ -1,5 +1,3 @@
 # ProyectoFinal
 
-## Este es el proyecto del Curso de CODERHOUSE de Javascript:
-
-https://brollix.github.io/ProyectoFinal/
+## Este es el proyecto final del Curso de JavaScript en CODERHOUSE
