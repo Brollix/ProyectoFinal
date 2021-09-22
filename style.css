@@ -1,5 +1,5 @@
 :root {
-	--bg-color: rgb(48, 73, 155) ;
+	--bg-color: rgb(48, 73, 155);
 	--contrast-color: #44609b;
 	--btn-active-color: #e7880c;
 	--btn-color: rgb(255, 179, 38);
@@ -12,16 +12,20 @@ body {
 	text-align: center;
 }
 
-#contenedor-principal{
+.encabezado {
+	padding-top: 75px;
+}
+
+#contenedor-principal {
 	padding-top: 5rem;
 }
 
-.table{
+.table {
 	max-width: 750px;
 	margin: auto;
 	text-align: center;
 }
-td{
+td {
 	text-align: center;
 	align-content: center;
 	height: 60px;
@@ -29,17 +33,33 @@ td{
 
 .td__imagen {
 	max-width: 25px;
-	
 }
 
-.td__precio{
+.td__precio {
 	text-align: center;
 }
 
-.btn{
+.td__btn {
+	float: right;
+}
+
+.td__btn:hover {
+	background-color: rgb(218, 145, 9);
+}
+.cover-heading {
+	margin: auto;
+	max-width: fit-content;
+	border-radius: 0.5rem;
+}
+
+.cover-heading:hover {
+	background-color: rgb(30, 45, 94);
+	cursor: pointer;
+}
+
+.btn {
 	background-color: var(--btn-color);
 	padding: 0.25rem;
 	border: none;
 	text-decoration: none;
-	float: right;
 }

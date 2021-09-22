@@ -1,17 +1,10 @@
 //#region Variables & Constantes
 let lista = [];
-let subtotal;
-let precio_final = 0;
-const icon_img = '/img/icon.svg';
+
 
 let url = 'https://api.bluelytics.com.ar/v2/latest';
 
-let icon = document.createElement('link');
-icon.rel = 'icon';
-icon.type = 'img/svg';
-icon.href = icon_img;
 
-document.head.appendChild(icon);
 //#endregion
 
 //#region Llamado a funciones y/o metodos
@@ -27,25 +20,16 @@ for (i = 0; i < length; i++) {
 	//console.log(`Prod ${productos[i].id}`);
 }
 
-show_products(productos);
+show_products(filter_by_socket(productos, 'CPU'));
 
 //#endregion
 
 //#region Funciones
 
-async function get_dolar(url, producto, precio) {
-	const response = await fetch(url);
-	const data = await response.json();
-	blue = data.blue.value_sell;
-
-	
-}
-
 function show_products(productos) {
 	const lista_productos = document.getElementById('lista-productos');
 	let counter = 1;
 	productos.forEach((producto) => {
-
 		let div_producto = document.createElement('tr');
 		div_producto.className = 'producto';
 
@@ -77,11 +61,11 @@ function show_products(productos) {
 
 		let boton = document.createElement('button');
 		boton.innerHTML = 'Add';
-		boton.className = 'btn td__add';
+		boton.className = 'btn td__btn';
 
 		boton.addEventListener('click', () => {
 			add_to_selected(producto);
-			filter_by_socket(productos, producto.Socket);
+			location.assign('index.html');
 		});
 
 		div_producto.appendChild(number);
@@ -93,18 +77,23 @@ function show_products(productos) {
 		precio.appendChild(boton);
 
 		lista_productos.appendChild(div_producto);
+
 		counter++;
 	});
 }
 
-//#endregion
+/* async function get_dolar(url) {
+	const response = await fetch(url);
+	const data = await response.json();
+	blue = data.blue.value_sell;
+} */
 
 //funcion para filtrar items por socket
 
-function filter_by_socket(array, socket) {
+function filter_by_socket(array, tipo) {
 	let filtered_array = [];
 	for (let i = 0; i < array.length; i++) {
-		if (array[i].Socket == socket) {
+		if (array[i].Tipo == tipo) {
 			filtered_array.push(array[i]);
 		}
 	}
@@ -126,4 +115,5 @@ function remove_from_selected(item) {
 	lista.splice(lista.indexOf(item));
 	localStorage.setItem('lista', lista);
 }
+
 //#endregion

@@ -11,38 +11,45 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+			crossorigin="anonymous"
+		></script>
 
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+			crossorigin="anonymous"
+		/>
 
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
 
-		<script defer src="index.js"></script>
+		<script defer src="cpu.js"></script>
 		<script src="prods.js"></script>
-		
 	</head>
 	<body>
 		<div class="encabezado">
 			<h1 class="cover-heading" id="titulo-pag">
-			BlackComponents | Build your PC
+				BlackComponents | Build your PC
 			</h1>
-			<h4>No Funciona ni para Atrás</h4>
+			<h4>Elegi tu Motherboard</h4>
 			<h3 id="dolar"></h3>
-
-
-			<h2 class="lead">
-				Elegi tus Partes. Arma tu PC. Compara y Comparti.
-			</h2>
 		</div>
 
 		<div id="contenedor-principal">
 			<table class="table table-light table-hover">
 				<thead>
+					<th scope="col">#</th>
+					<th scope="col">Imagen</th>
 					<th scope="col">Tipo</th>
-					<th scope="col">Seleccion</th>
+					<th scope="col">Marca</th>
+					<th scope="col">Socket</th>
 					<th scope="col">Precio</th>
 				</thead>
-				<tbody id="lista-opciones"></tbody>
+				<tbody id="lista-productos"></tbody>
 			</table>
 		</div>
+	</body>
 </html>
